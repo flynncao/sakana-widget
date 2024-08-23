@@ -52,6 +52,10 @@ interface SakanaWidgetOptions {
    * enable accessibility title feature, default to `false`
    */
   title?: boolean;
+  /**
+   * allow playing allowAudio
+   */
+  allowAudio?: boolean;
 }
 
 const defaultOptions: SakanaWidgetOptions = {
@@ -68,6 +72,7 @@ const defaultOptions: SakanaWidgetOptions = {
   threshold: 0.1,
   rotate: 0,
   title: false,
+  allowAudio: true,
 };
 
 // register default characters
@@ -101,6 +106,7 @@ class SakanaWidget {
   private _char!: string;
   private _image!: string;
   private _state!: SakanaWidgetState;
+  private _audio!: string;
 
   // dom element related
   private _domWrapper!: HTMLDivElement; // this is needed for resize observer
@@ -109,6 +115,7 @@ class SakanaWidget {
   private _domCanvasCtx!: CanvasRenderingContext2D;
   private _domMain!: HTMLDivElement;
   private _domImage!: HTMLDivElement;
+  private _domAudio!: HTMLAudioElement;
   private _domCtrlPerson!: HTMLDivElement;
   private _domCtrlMagic!: HTMLDivElement;
   private _domCtrlClose!: HTMLDivElement;
@@ -259,6 +266,14 @@ class SakanaWidget {
     img.style.backgroundImage = `url('${this._image}')`;
     this._domImage = img;
     main.appendChild(img);
+
+    if (this._options.allowAudio) {
+      const voice = document.createElement('audio');
+      voice.loop = false;
+      voice.src = this._audio;
+      this._domAudio = voice;
+      main.appendChild(voice);
+    }
 
     // control bar
     const ctrl = document.createElement('div');
@@ -461,6 +476,7 @@ class SakanaWidget {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
       this._running = true;
+      this._domAudio.play();
       requestAnimationFrame(this._run);
     };
 
@@ -559,6 +575,11 @@ class SakanaWidget {
     }
   };
 
+  setAudio = (src: string) => {
+    this._audio = src;
+    return this;
+  };
+
   /**
    * @public
    * set current state of widget
@@ -583,6 +604,7 @@ class SakanaWidget {
     this._char = name;
     this._image = targetChar.image;
     this.setState(targetChar.initialState);
+    this.setAudio(targetChar.audio);
 
     // refresh the widget image
     if (this._domImage) {

@@ -1,6 +1,7 @@
 import _chisato from './chisato.png';
 import _takina from './takina.png';
-
+// import _chisaoAudio from './chisato.mp3';
+// import _takinaAudio from './takina.mp3';
 export interface SakanaWidgetState {
   /**
    * inertia
@@ -34,6 +35,7 @@ export interface SakanaWidgetState {
 
 export interface SakanaWidgetCharacter {
   image: string;
+  audio: string
   initialState: SakanaWidgetState;
 }
 
@@ -48,6 +50,8 @@ const chisato: SakanaWidgetCharacter = {
     t: 0,
     w: 0,
   },
+  // audio: '_takinaAudio',
+  audio: 'https://od.lk/s/NjJfNzUzNDI2MjZf/chinanago.mp3',
 };
 
 const takina: SakanaWidgetCharacter = {
@@ -61,6 +65,8 @@ const takina: SakanaWidgetCharacter = {
     t: 0,
     w: 0,
   },
+  // audio: '_takinaAudio',
+  audio: 'https://od.lk/s/NjJfNzUzNDI2MjVf/sakana.mp3'
 };
 
 export default {
