@@ -10,15 +10,15 @@
     "takina"
   ],
   "license": "MIT",
-  "homepage": "https://sakana.dsrkafuu.net",
+  "homepage": "https://flynncao.xyz/sakana-widget/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dsrkafuu/sakana-widget.git"
+    "url": "git+https://github.com/flynncao/sakana-widget.git"
   },
-  "authors": [{ "name": "DSRKafuU" }, { "name": "itorr" }],
+  "authors": [{ "name": "Flynn Cao" }, { "name": "Majimay" }],
   "autoupdate": {
     "source": "npm",
-    "target": "sakana-widget",
+    "target": "sakana-widget-z",
     "fileMap": [
       {
         "basePath": "lib",

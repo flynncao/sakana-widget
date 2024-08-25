@@ -2,8 +2,8 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "name": "sakana-widget",
-  "version": "2.7.0",
+  "name": "sakana-widget-z",
+  "version": "1.0.0",
   "description": "Sakana widget for Web. | 网页小组件版本的石蒜模拟器。",
   "keywords": [
     "widget",
@@ -13,10 +13,10 @@
     "chisato",
     "takina"
   ],
-  "author": "DSRKafuU <dsrkafuu@outlook.com>",
-  "homepage": "https://github.dsrkafuu.net/sakana-widget/",
+  "author": "Flynn Cao <realflynncao@gmail.com>",
+  "homepage": "https://flynncao.xyz/sakana-widget/",
   "license": "MIT",
-  "repository": "github:dsrkafuu/sakana-widget",
+  "repository": "github:flynncao/sakana-widget",
   "files": [
     "lib"
   ],
