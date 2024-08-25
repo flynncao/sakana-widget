@@ -451,6 +451,21 @@ class SakanaWidget {
     this._draw();
   };
 
+  private _playAudio = () => {
+    if (this._domAudio) {
+      const v = this._state;
+      if (this._char === 'chisato') {
+        if (Math.abs(v.r) <= 4 && Math.abs(v.y) >= 20) {
+          this._domAudio.play();
+        }
+      }
+      if (this._char === 'takina') {
+        if (Math.abs(v.y) <= 12 || v.r >= 3 * Math.abs(v.y)) {
+          this._domAudio.play();
+        }
+      }
+    }
+  };
   /**
    * @private
    * handle mouse down event
@@ -476,7 +491,7 @@ class SakanaWidget {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
       this._running = true;
-      this._domAudio.play();
+      this._playAudio();
       requestAnimationFrame(this._run);
     };
 
@@ -609,6 +624,10 @@ class SakanaWidget {
     // refresh the widget image
     if (this._domImage) {
       this._domImage.style.backgroundImage = `url('${this._image}')`;
+    }
+    if (this._domAudio) {
+      this._domAudio.src = this._audio;
+      this._domAudio.load();
     }
     return this;
   };
